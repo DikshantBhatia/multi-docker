@@ -9,10 +9,10 @@ script:
   - docker run -e CI=true dbhatia/react-test npm test
 
 after_success:
-  - docker build -t dbbb2021/multi-client -f ./client
-  - docker build -t dbbb2021/multi-nginx -f ./nginx
-  - docker build -t dbbb2021/multi-server -f ./server
-  - docker build -t dbbb2021/multi-worker -f ./worker
+  - docker build -t dbbb2021/multi-client ./client
+  - docker build -t dbbb2021/multi-nginx ./nginx
+  - docker build -t dbbb2021/multi-server ./server
+  - docker build -t dbbb2021/multi-worker ./worker
   # Log in to the Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take the build images and push to docker hub
